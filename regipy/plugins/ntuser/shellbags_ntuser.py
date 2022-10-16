@@ -119,6 +119,7 @@ class ShellBagNtuserPlugin(Plugin):
 
                     sk_reg_path = f'{reg_path}\\{v.name}'
                     entry = {'value': value,
+                             'shell': item,
                              'slot': slot,
                              'reg_path': sk_reg_path,
                              'node_slot': node_slot,
@@ -135,11 +136,6 @@ class ShellBagNtuserPlugin(Plugin):
                     sk = self.registry_hive.get_key(sk_reg_path)
                     self.iter_sk(sk, sk_reg_path, path)
 
-
-
-
-
-
     def run(self):
         try:
             shellbag_ntuser_subkey = self.registry_hive.get_key(NTUSER_SHELLBAG)
@@ -149,6 +145,9 @@ class ShellBagNtuserPlugin(Plugin):
 
         except RegistryKeyNotFoundException as ex:
             logger.error(f'Could not find {self.NAME} plugin data at: {NTUSER_SHELLBAG}: {ex}')
+
+
+
 
 
 
